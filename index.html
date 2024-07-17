@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Sederhana</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="calculator">
+        <h2>Kalkulator Sederhana</h2>
+        <input type="number" id="bilangan1" placeholder="Angka 1">
+        <input type="number" id="bilangan2" placeholder="Angka 2">
+        <div>
+            <button onclick="calculate('+')">+</button>
+            <button onclick="calculate('-')">-</button>
+            <button onclick="calculate('*')">*</button>
+            <button onclick="calculate('/')">/</button>
+            <button onclick="reset()">c</button>
+        </div>
+        <h3 id="result">Hasil: </h3>
+    </div>
+
+    <script>
+        function calculate(operation) {
+            const bil1 = parseFloat(document.getElementById('bilangan1').value);
+            const bil2 = parseFloat(document.getElementById('bilangan2').value);
+            let result;
+            if (isNaN(bil1) || isNaN(bil2)) {
+                result = "Input tidak valid";
+            } else {
+                switch (operation) {
+                    case '+':
+                        result = bil1 + bil2;
+                        break;
+                    case '-':
+                        result = bil1 - bil2;
+                        break;
+                    case '*':
+                        result = bil1 * bil2;
+                        break;
+                    case '/':
+                        result = bil1 / bil2;
+                        break;
+                    default:
+                        result = "Operasi tidak valid";
+                }
+            }
+            document.getElementById('result').innerText = "Hasil: " + result;
+        }
+
+        function reset() {
+            document.getElementById('bilangan1').value = '';
+            document.getElementById('bilangan2').value = '';
+            document.getElementById('result').innerText = "Hasil: ";
+        }
+    </script>
+</body>
+</html>
